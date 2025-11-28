@@ -1,0 +1,15 @@
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/ament_index/resource_index/package_run_dependencies/pkg_metapackage
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/ament_index/resource_index/parent_prefix_path/pkg_metapackage
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/environment/ament_prefix_path.sh
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/environment/ament_prefix_path.dsv
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/environment/path.sh
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/environment/path.dsv
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/local_setup.bash
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/local_setup.sh
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/local_setup.zsh
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/local_setup.dsv
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/package.dsv
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/ament_index/resource_index/packages/pkg_metapackage
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/cmake/pkg_metapackageConfig.cmake
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/cmake/pkg_metapackageConfig-version.cmake
+/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/pkg_metapackage/share/pkg_metapackage/package.xml
