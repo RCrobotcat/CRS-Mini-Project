@@ -1,0 +1,582 @@
+<?xml version="1.0" ?>
+<!--
+  Yahboomcar MicroROS Robot SDF for Gazebo
+  Based on MicroROS.urdf structure with all original links, joints, and meshes
+-->
+<sdf version="1.7">
+  <model name="yahboomcar">
+
+    <!-- ========== Base Link ========== -->
+    <link name="base_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.0038187037800903 -0.000532399212617988 -0.00668209865413972 0 0 0</pose>
+        <mass>0.222555109690442</mass>
+        <inertia>
+          <ixx>0.000160582675692647</ixx>
+          <ixy>-8.18530574494391E-07</ixy>
+          <ixz>-2.74575507729664E-06</ixz>
+          <iyy>0.000176217109527607</iyy>
+          <iyz>1.64721285063183E-07</iyz>
+          <izz>0.000302441932451338</izz>
+        </inertia>
+      </inertial>
+      <visual name="base_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="base_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- ========== Wheel Links ========== -->
+    <!-- Front Right Wheel (zq_Link) -->
+    <link name="zq_Link">
+      <pose>0.0455 0.0675 -0.02125 0 0 0</pose>
+      <inertial>
+        <pose>2.84786462870987E-05 0.00150864010556555 -6.41979491855862E-06 0 0 0</pose>
+        <mass>0.0141019725825625</mass>
+        <inertia>
+          <ixx>2.6630099758609E-06</ixx>
+          <ixy>1.26357217848149E-10</ixy>
+          <ixz>3.48142402253186E-10</ixz>
+          <iyy>4.6848091087889E-06</iyy>
+          <iyz>1.13495192666687E-11</iyz>
+          <izz>2.66447797487454E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="zq_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/zq_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.647 0.620 0.588 1</ambient>
+          <diffuse>0.647 0.620 0.588 1</diffuse>
+        </material>
+      </visual>
+      <collision name="zq_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/zq_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- Front Left Wheel (yq_Link) -->
+    <link name="yq_Link">
+      <pose>0.0455 -0.0675 -0.02125 0 0 0</pose>
+      <inertial>
+        <pose>2.46503405071305E-05 -0.00150864013768208 1.56400066804556E-05 0 0 0</pose>
+        <mass>0.0141019726622963</mass>
+        <inertia>
+          <ixx>2.66339752604607E-06</ixx>
+          <ixy>-1.22792569566631E-10</ixy>
+          <ixz>-7.34799731138498E-10</ixz>
+          <iyy>4.68480910880912E-06</iyy>
+          <iyz>-3.18889570074274E-11</iyz>
+          <izz>2.66409042506092E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="yq_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/yq_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.647 0.620 0.588 1</ambient>
+          <diffuse>0.647 0.620 0.588 1</diffuse>
+        </material>
+      </visual>
+      <collision name="yq_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/yq_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- Rear Left Wheel (yh_Link) -->
+    <link name="yh_Link">
+      <pose>-0.0495 -0.0675 -0.02125 0 0 0</pose>
+      <inertial>
+        <pose>-3.70764732487289E-06 -0.00150864010086474 -2.89569007898387E-05 0 0 0</pose>
+        <mass>0.0141019725703797</mass>
+        <inertia>
+          <ixx>2.66453003257312E-06</ixx>
+          <ixy>5.38819271008195E-11</ixy>
+          <ixz>-2.05112988374728E-10</ixz>
+          <iyy>4.68480910877904E-06</iyy>
+          <iyz>1.14855312609176E-10</iyz>
+          <izz>2.66295791816006E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="yh_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/yh_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.647 0.620 0.588 1</ambient>
+          <diffuse>0.647 0.620 0.588 1</diffuse>
+        </material>
+      </visual>
+      <collision name="yh_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/yh_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- Rear Right Wheel (zh_Link) -->
+    <link name="zh_Link">
+      <pose>-0.0495 0.0675 -0.02125 0 0 0</pose>
+      <inertial>
+        <pose>2.71005454374126E-05 0.00150864011455075 -1.08539409463503E-05 0 0 0</pose>
+        <mass>0.0141019726113614</mass>
+        <inertia>
+          <ixx>2.66315588150881E-06</ixx>
+          <ixy>1.26558270834104E-10</ixy>
+          <ixz>5.60449660674614E-10</ixz>
+          <iyy>4.68480910884624E-06</iyy>
+          <iyz>-8.82832301592923E-12</iyz>
+          <izz>2.66433206935428E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="zh_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/zh_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.647 0.620 0.588 1</ambient>
+          <diffuse>0.647 0.620 0.588 1</diffuse>
+        </material>
+      </visual>
+      <collision name="zh_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/zh_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- ========== IMU Link ========== -->
+    <link name="imu_Link">
+      <pose>-0.002999 -0.0030001 0.031701 0 0 0</pose>
+      <inertial>
+        <pose>-0.0316761324986627 0.00132159782250217 -0.000479349648167576 0 0 0</pose>
+        <mass>0.0132101454078263</mass>
+        <inertia>
+          <ixx>2.09255982058915E-06</ixx>
+          <ixy>-1.5860144299643E-08</ixy>
+          <ixz>-3.27485068549135E-10</ixz>
+          <iyy>4.73790359695282E-06</iyy>
+          <iyz>-2.29375131893769E-10</iyz>
+          <izz>6.79434472621533E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="imu_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/imu_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.149 0.149 0.149 1</ambient>
+          <diffuse>0.149 0.149 0.149 1</diffuse>
+        </material>
+      </visual>
+      <collision name="imu_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/imu_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <!-- IMU Sensor -->
+      <sensor name="imu_sensor" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <visualize>true</visualize>
+        <topic>imu</topic>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </link>
+
+    <!-- ========== Radar/Lidar Link ========== -->
+    <link name="radar_Link">
+      <pose>0 0 0.078933557468359 0 0 0</pose>
+      <inertial>
+        <pose>2.50028066700073E-05 9.8943368066196E-05 -0.0175251744352531 0 0 0</pose>
+        <mass>0.0384696758414604</mass>
+        <inertia>
+          <ixx>8.81880784590578E-06</ixx>
+          <ixy>-1.66165059019566E-07</ixy>
+          <ixz>-1.11024960466139E-07</ixz>
+          <iyy>1.44967275960782E-05</iyy>
+          <iyz>-3.88415222298422E-08</iyz>
+          <izz>2.24335777017028E-05</izz>
+        </inertia>
+      </inertial>
+      <visual name="radar_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/radar_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.180 0.180 0.180 1</ambient>
+          <diffuse>0.180 0.180 0.180 1</diffuse>
+        </material>
+      </visual>
+      <collision name="radar_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/radar_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <!-- Lidar Sensor -->
+      <sensor name="lidar" type="ray">
+        <pose>0 0 0 0 0 0</pose>
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <update_rate>10</update_rate>
+        <topic>scan</topic>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>12.0</max>
+            <resolution>0.015</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+      </sensor>
+    </link>
+
+    <!-- ========== Robotic Arm Links (Optional) ========== -->
+    <!-- Joint 1 Link (jq1_Link) -->
+    <link name="jq1_Link">
+      <pose>0.064 0 0.014 0 0 0</pose>
+      <inertial>
+        <pose>0.0110585433790032 -0.00605208841063553 0.015781881952638 0 0 0</pose>
+        <mass>0.0115074341427154</mass>
+        <inertia>
+          <ixx>1.61581689683415E-06</ixx>
+          <ixy>1.00926034806027E-09</ixy>
+          <ixz>-2.6905085628935E-07</ixz>
+          <iyy>9.62368700578607E-07</iyy>
+          <iyz>7.36350494885753E-09</iyz>
+          <izz>1.35577194148353E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="jq1_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/jq1_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.776 0.757 0.737 1</ambient>
+          <diffuse>0.776 0.757 0.737 1</diffuse>
+        </material>
+      </visual>
+      <collision name="jq1_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/jq1_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Joint 2 Link (jq2_Link) -->
+    <link name="jq2_Link">
+      <pose>0.080864 8.4892E-05 0.037959 0 0 0</pose>
+      <inertial>
+        <pose>0.0135058163511177 0.000857671482029795 0.00288177408889561 0 0 0</pose>
+        <mass>0.0133313425901211</mass>
+        <inertia>
+          <ixx>1.96303534926057E-06</ixx>
+          <ixy>3.68224074620386E-09</ixy>
+          <ixz>2.60821852145315E-07</ixz>
+          <iyy>1.5250310537691E-06</iyy>
+          <iyz>5.421881574463E-09</iyz>
+          <izz>1.9926579435283E-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="jq2_visual">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/jq2_Link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.298 0.298 0.298 1</ambient>
+          <diffuse>0.298 0.298 0.298 1</diffuse>
+        </material>
+      </visual>
+      <collision name="jq2_collision">
+        <geometry>
+          <mesh>
+            <uri>model://yahboomcar_description/meshes/jq2_Link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- ========== Joints ========== -->
+    <!-- Wheel Joints -->
+    <joint name="zq_Joint" type="revolute">
+      <parent>base_link</parent>
+      <child>zq_Link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name="yq_Joint" type="revolute">
+      <parent>base_link</parent>
+      <child>yq_Link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name="yh_Joint" type="revolute">
+      <parent>base_link</parent>
+      <child>yh_Link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name="zh_Joint" type="revolute">
+      <parent>base_link</parent>
+      <child>zh_Link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- IMU Joint -->
+    <joint name="imu_Joint" type="fixed">
+      <parent>base_link</parent>
+      <child>imu_Link</child>
+    </joint>
+
+    <!-- Radar Joint -->
+    <joint name="radar_Joint" type="fixed">
+      <parent>base_link</parent>
+      <child>radar_Link</child>
+    </joint>
+
+    <!-- Arm Joints -->
+    <joint name="jq1_Joint" type="revolute">
+      <parent>base_link</parent>
+      <child>jq1_Link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>10</effort>
+          <velocity>1.0</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.5</damping>
+          <friction>0.5</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <joint name="jq2_Joint" type="revolute">
+      <parent>jq1_Link</parent>
+      <child>jq2_Link</child>
+      <axis>
+        <xyz>0.0037845 -0.99999 0</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>10</effort>
+          <velocity>1.0</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.5</damping>
+          <friction>0.5</friction>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- ========== Gazebo Plugins ========== -->
+    <!-- Four-Wheel Differential Drive Plugin -->
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <!-- Wheels -->
+      <left_joint>yq_Joint</left_joint>
+      <left_joint>yh_Joint</left_joint>
+      <right_joint>zq_Joint</right_joint>
+      <right_joint>zh_Joint</right_joint>
+
+      <!-- Kinematics -->
+      <wheel_separation>0.135</wheel_separation>
+      <wheel_diameter>0.065</wheel_diameter>
+
+      <!-- Limits -->
+      <max_wheel_torque>5.0</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+
+      <!-- Output -->
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+
+      <!-- Topics -->
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+
+      <!-- Update Rate -->
+      <update_rate>50</update_rate>
+    </plugin>
+
+    <!-- Joint State Publisher -->
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <update_rate>50</update_rate>
+      <joint_name>zq_Joint</joint_name>
+      <joint_name>yq_Joint</joint_name>
+      <joint_name>yh_Joint</joint_name>
+      <joint_name>zh_Joint</joint_name>
+      <joint_name>jq1_Joint</joint_name>
+      <joint_name>jq2_Joint</joint_name>
+    </plugin>
+
+  </model>
+</sdf>
