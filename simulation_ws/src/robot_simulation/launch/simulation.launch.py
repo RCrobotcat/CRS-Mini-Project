@@ -19,7 +19,7 @@ def generate_launch_description():
     # --- 世界环境参数 ---
     declare_world_name = DeclareLaunchArgument(
         'world_name',
-        default_value='1.world',
+        default_value='2.world',
         description='Gazebo世界文件名称'
     )
 
@@ -50,25 +50,25 @@ def generate_launch_description():
 
     declare_x_pose = DeclareLaunchArgument(
         'x_pose',
-        default_value='-1.5',
+        default_value='5',
         description='机器人初始X坐标（米）'
     )
 
     declare_y_pose = DeclareLaunchArgument(
         'y_pose',
-        default_value='-1.5',
+        default_value='-6',
         description='机器人初始Y坐标（米）'
     )
 
     declare_z_pose = DeclareLaunchArgument(
         'z_pose',
-        default_value='0.0',
+        default_value='0.05',
         description='机器人初始Z坐标（米）'
     )
 
     declare_yaw_pose = DeclareLaunchArgument(
         'yaw_pose',
-        default_value='0.0',
+        default_value='-3.14',
         description='机器人初始偏航角（弧度）'
     )
 

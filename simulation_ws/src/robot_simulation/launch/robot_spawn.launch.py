@@ -42,22 +42,32 @@ def generate_launch_description():
     # SDF模型文件的完整路径
     sdf_file = os.path.join(
         pkg_share,
-        'models/turtlebot3_waffle/model.sdf',
+        'models/four_diff/model.sdf',
     )
 
     # ========== 环境变量设置 ==========
     # 设置Gazebo模型路径，使Gazebo能够找到机器人的mesh文件和其他资源
     models_dir = os.path.join(pkg_share, 'models')
+
+    # 添加 yahboomcar_description 到模型路径
+    yahboom_pkg_share = FindPackageShare(package='yahboomcar_description').find('yahboomcar_description')
+
+    # 获取当前的 GAZEBO_MODEL_PATH
+    current_model_path = os.environ.get('GAZEBO_MODEL_PATH', '')
+
+    # 组合所有路径
+    combined_model_path = f"{models_dir}:{yahboom_pkg_share}:{current_model_path}"
+
     set_model_path = SetEnvironmentVariable(
         name='GAZEBO_MODEL_PATH',
-        value=models_dir
+        value=combined_model_path
     )
 
     # ========== Launch参数声明 ==========
     # 声明robot_name参数：机器人的名称，用于在多机器人仿真中区分不同机器人
     declare_robot_name = DeclareLaunchArgument(
         'robot_name',
-        default_value='micu_car',
+        default_value='mycar',
         description='机器人名称，用于命名空间和实体标识'
     )
 
@@ -119,6 +129,12 @@ def generate_launch_description():
         output='screen'
     )
 
+    tf_base_footprint_to_base_link = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        arguments=['0', '0', '0.05', '0.0', '0.0', '0.0', 'base_footprint', 'base_link'],
+    )
+
     # ========== 构建Launch描述 ==========
     return LaunchDescription([
         # 环境变量设置
@@ -131,7 +147,7 @@ def generate_launch_description():
         declare_z_pose,
         declare_yaw_pose,
         declare_use_sim_time,
-
+        tf_base_footprint_to_base_link,
         # 节点启动
         spawn_entity_node,
     ])

@@ -1,0 +1,1 @@
+/home/yahboom/simulation_ws/src/robot_nav2/launch/robot_lidar.launch.py

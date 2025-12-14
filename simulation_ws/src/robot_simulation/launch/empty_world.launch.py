@@ -59,7 +59,7 @@ def generate_launch_description():
     # 声明world_name参数：指定要加载的世界文件名
     declare_world_name = DeclareLaunchArgument(
         'world_name',
-        default_value='empty_world.world',
+        default_value='2.world',
         description='Gazebo世界文件名称（不含路径）'
     )
 
@@ -73,7 +73,7 @@ def generate_launch_description():
     # 声明verbose参数：是否输出详细的调试信息
     declare_verbose = DeclareLaunchArgument(
         'verbose',
-        default_value='false',
+        default_value='true',
         description='是否输出详细日志信息（true/false）'
     )
 

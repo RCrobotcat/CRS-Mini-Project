@@ -34,8 +34,8 @@ def generate_launch_description():
 
 
     urdf_path = os.path.join(
-        get_package_share_directory('robot_simulation'),
-        'urdf/turtlebot3_waffle.urdf')
+        get_package_share_directory('yahboomcar_description'),
+        'urdf/MicroROS.urdf')
 
     with open(urdf_path, 'r') as infp:
         robot_desc = infp.read()

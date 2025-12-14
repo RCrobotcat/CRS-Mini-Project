@@ -1,19 +1,90 @@
-1、如何建图？
-运行仿真环境：ros2 launch robot_simulation simulation.launch.py
-运行建图算法：ros2 launch robot_nav2 gmapping.launch.py
-运行rviz可视化：ros2 launch robot_nav2 slam_laser_rviz.launch.py
-运行键盘控制节点：ros2 run teleop_twist_keyboard teleop_twist_keyboard.py 
-按键盘控制节点提示控制小车移动扫完整个地图场景后保存地图文件：ros2 launch robot_nav2 map_save.launch.py
+# Yahboomcar Gazebo Navigation (ROS 2)
 
-2、如何取点？
-运行仿真环境：ros2 launch robot_simulation simulation.launch.py
-运行代价地图过滤器：ros2 launch  robot_nav2 costmap_filter_info.launch.py
-运行导航栈：ros2 launch robot_nav2 navigation.launch.py
-运行取点：ros2 run robot_nav2  get_points.py
-按照终端提示在rviz中使用2D goal pose分别取起点和终点的坐标，结果会自动保存在csv中
+---
 
-2、在建图和取点完成后：
-运行仿真环境：ros2 launch robot_simulation simulation.launch.py
-运行代价地图过滤器：ros2 launch  robot_nav2 costmap_filter_info.launch.py
-运行导航栈：ros2 launch robot_nav2 navigation.launch.py
-运行主程序：ros2 run robot_nav2  go.py
+## 0. Make Script Executable
+
+```bash
+chmod +x gazebo_yahboom.sh
+```
+
+---
+
+## 1. Build Map
+
+Start the Gazebo simulation:
+
+```bash
+./gazebo_yahboom.sh
+```
+
+Equivalent manual commands:
+
+```bash
+source /usr/share/gazebo-11/setup.sh
+source install/setup.bash
+export GAZEBO_MODEL_PATH="${PWD}/src/robot_simulation/models:${PWD}/install/yahboomcar_description/share:${PWD}/src/robot_description/models:${GAZEBO_MODEL_PATH}"
+export GAZEBO_RESOURCE_PATH="${PWD}/install/yahboomcar_description/share:${GAZEBO_RESOURCE_PATH}"
+ros2 launch robot_simulation simulation.launch.py
+```
+
+Run SLAM and visualization:
+
+```bash
+ros2 launch robot_nav2 gmapping.launch.py
+ros2 launch robot_nav2 slam_laser_rviz.launch.py
+```
+
+Run keyboard control:
+
+```bash
+ros2 run yahboomcar_ctrl yahboom_keyboard
+```
+
+Drive the robot to scan the whole environment, then save the map:
+
+```bash
+ros2 launch robot_nav2 map_save.launch.py
+```
+
+---
+
+## 2. Get Start and Goal Points
+
+Start the Gazebo simulation:
+
+```bash
+./gazebo_yahboom.sh
+```
+
+Run navigation components:
+
+```bash
+ros2 launch robot_nav2 costmap_filter_info.launch.py
+ros2 launch robot_nav2 navigation.launch.py
+ros2 run robot_nav2 get_points.py
+```
+
+Use **2D Goal Pose** in RViz to select the start and goal points.  
+The coordinates will be saved automatically to a CSV file.
+
+---
+
+## 3. Run Navigation
+
+Start the Gazebo simulation:
+
+```bash
+./gazebo_yahboom.sh
+```
+
+Run navigation:
+
+```bash
+ros2 launch robot_nav2 costmap_filter_info.launch.py
+ros2 launch robot_nav2 navigation.launch.py
+ros2 run robot_nav2 go.py
+```
+
+The robot will navigate automatically from the start point to the goal point.
+
