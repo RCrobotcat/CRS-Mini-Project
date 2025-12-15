@@ -500,7 +500,7 @@ if __name__ == '__main__':
     robot.reboot_device()
 
     robot.set_wifi_config("EEG", "15394905592")
-    robot.set_udp_config([192, 168, 203, 102], 8090)
+    robot.set_udp_config([192, 168, 148, 102], 8090)
     robot.set_car_type(robot.CAR_TYPE_COMPUTER)
     # robot.set_car_type(robot.CAR_TYPE_RPI5)
     # robot.set_car_type(robot.CAR_TYPE_RISCV)

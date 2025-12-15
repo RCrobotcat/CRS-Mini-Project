@@ -50,13 +50,13 @@ def generate_launch_description():
 
     declare_x_pose = DeclareLaunchArgument(
         'x_pose',
-        default_value='5',
+        default_value='0.7',
         description='机器人初始X坐标（米）'
     )
 
     declare_y_pose = DeclareLaunchArgument(
         'y_pose',
-        default_value='-6',
+        default_value='-0.8',
         description='机器人初始Y坐标（米）'
     )
 

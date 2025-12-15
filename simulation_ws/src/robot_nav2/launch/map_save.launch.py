@@ -12,7 +12,7 @@ def generate_launch_description():
         package='nav2_map_server',
         executable='map_saver_cli',
         output='screen',
-        arguments=['-f', '/home/micu/robot_ws/install/robot_nav2/share/robot_nav2/map/map'],
+        arguments=['-f', '/home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/map'],
         
         parameters=[{'save_map_timeout': 20000.0},
                     {'free_thresh_default': 0.196000}]
@@ -23,7 +23,7 @@ def generate_launch_description():
         executable='map_saver_cli',
         name='map_backup',
         output='screen',
-        arguments=['-f', '/home/micu/robot_ws/src/robot_nav2/map/map'],
+        arguments=['-f', '/home/yahboom/simulation_ws/src/robot_nav2/map/map'],
         
         parameters=[{'save_map_timeout': 20000.0},
                     {'free_thresh_default': 0.196000}]

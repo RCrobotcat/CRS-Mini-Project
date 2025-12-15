@@ -4,6 +4,7 @@
 /home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//launch/simulation.launch.py
 /home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//worlds/1.world
 /home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//worlds/2.world
+/home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//worlds/maze.world
 /home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//worlds/square/model.config
 /home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//worlds/square/model.sdf
 /home/yahboom/simulation_ws/install/robot_simulation/share/robot_simulation//worlds/turtlebot3_world.world

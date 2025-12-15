@@ -13,6 +13,7 @@
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/map.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/burger.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/keepout_params.yaml
+/home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/nav2_params.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/turtlebot3_diff.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/waffle.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/wheeltec_demo_params/param_mini_4wd_DWB.yaml

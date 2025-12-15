@@ -24,7 +24,7 @@ def generate_launch_description():
     default_map_path = os.path.join(robot_nav2_dir, 'map', 'map.yaml')
     
     # 构建 Nav2 参数文件的默认绝对路径
-    default_param_path = os.path.join(robot_nav2_dir, 'param', 'turtlebot3_diff.yaml')
+    default_param_path = os.path.join(robot_nav2_dir, 'param', 'nav2_params.yaml')
 
     # 声明 'use_sim_time' 参数,告知所有节点是否使用仿真时钟 (例如 Gazebo 发布的 /clock 话题)
     declare_use_sim_time = DeclareLaunchArgument(
