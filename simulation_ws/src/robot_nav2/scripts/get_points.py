@@ -80,7 +80,7 @@ def main(args=None):
     node = GoalPoseSubscriber()
 
 
-    csv_file_path = '/home/micu/robot_ws/src/robot_nav2/config/output.csv'
+    csv_file_path = '/home/yahboom/simulation_ws/src/robot_nav2/config/output.csv'
     node.get_logger().info(f"航点将保存到: {csv_file_path}")
 
     try:

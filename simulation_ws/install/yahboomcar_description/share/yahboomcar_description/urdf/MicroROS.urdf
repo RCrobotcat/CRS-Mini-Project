@@ -353,7 +353,7 @@
     name="radar_Joint"
     type="fixed">
     <origin
-      xyz="0 0 0.078933557468359"
+      xyz="0 0.02 0.078933557468359"
       rpy="0 0 0" />
     <parent
       link="base_link" />

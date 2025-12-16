@@ -82,7 +82,7 @@ def main(args=None):
     client = NavThroughPosesClient()
 
     # 从CSV文件读取导航点
-    csv_file_path = '/home/micu/robot_ws/src/robot_nav2/config/output.csv'
+    csv_file_path = '/home/yahboom/simulation_ws/src/robot_nav2/config/output.csv'
     waypoints = read_waypoints_from_csv(csv_file_path)
     
     if not waypoints:

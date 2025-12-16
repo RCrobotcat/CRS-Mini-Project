@@ -1,12 +1,12 @@
 amcl:
   ros__parameters:
-    use_sim_time: True
-    alpha1: 0.05
-    alpha2: 0.05
-    alpha3: 0.05
-    alpha4: 0.05
-    alpha5: 0.05
+    alpha1: 0.2
+    alpha2: 0.2
+    alpha3: 0.2
+    alpha4: 0.2
+    alpha5: 0.2
     base_frame_id: "base_footprint"
+    introspection_mode: "disabled"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
     beam_skip_threshold: 0.3
@@ -18,26 +18,35 @@ amcl:
     laser_min_range: -1.0
     laser_model_type: "likelihood_field"
     max_beams: 60
-    max_particles: 8000
-    min_particles: 2000
+    max_particles: 2000
+    min_particles: 500
     odom_frame_id: "odom"
-    pf_err: 0.02
+    pf_err: 0.05
     pf_z: 0.99
     recovery_alpha_fast: 0.0
     recovery_alpha_slow: 0.0
     resample_interval: 1
     robot_model_type: "nav2_amcl::DifferentialMotionModel"
     save_pose_rate: 0.5
-    sigma_hit: 0.1
+    sigma_hit: 0.2
     tf_broadcast: true
     transform_tolerance: 1.0
-    update_min_a: 0.5
-    update_min_d: 0.3
+    update_min_a: 0.2
+    update_min_d: 0.25
     z_hit: 0.5
     z_max: 0.05
     z_rand: 0.5
     z_short: 0.05
     scan_topic: scan
+    map_topic: map
+    set_initial_pose: false
+    always_reset_initial_pose: false
+    first_map_only: false
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
 
 bt_navigator:
   ros__parameters:
@@ -119,7 +128,7 @@ controller_server:
 
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.5
+      required_movement_radius: 0.1
       movement_time_allowance: 10.0
     general_goal_checker:
       stateful: True
@@ -134,9 +143,9 @@ controller_server:
       max_vel_x: 0.30
       max_vel_y: 0.0
       max_vel_theta: 1.0
-      min_speed_xy: -0.20
+      min_speed_xy: 0.05
       max_speed_xy: 0.30
-      min_speed_theta: -0.5
+      min_speed_theta: 0.4
       acc_lim_x: 2.5
       acc_lim_y: 0.0
       acc_lim_theta: 3.2
@@ -155,13 +164,13 @@ controller_server:
       short_circuit_trajectory_evaluation: True
       stateful: True
       critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
-      BaseObstacle.scale: 0.02
-      PathAlign.scale: 32.0
+      BaseObstacle.scale: 0.05
+      PathAlign.scale: 128.0
       PathAlign.forward_point_distance: 0.1
-      GoalAlign.scale: 24.0
+      GoalAlign.scale: 1.0
       GoalAlign.forward_point_distance: 0.1
-      PathDist.scale: 32.0
-      GoalDist.scale: 24.0
+      PathDist.scale: 128.0
+      GoalDist.scale: 1.0
       RotateToGoal.scale: 32.0
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
@@ -182,8 +191,8 @@ local_costmap:
       plugins: ["voxel_layer", "static_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 10.0
-        inflation_radius: 0.03
+        cost_scaling_factor: 5.0
+        inflation_radius: 0.05
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
@@ -240,8 +249,8 @@ global_costmap:
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 10.0
-        inflation_radius: 0.03
+        cost_scaling_factor: 5.0
+        inflation_radius: 0.05
       always_send_full_costmap: True
 
 map_server:
