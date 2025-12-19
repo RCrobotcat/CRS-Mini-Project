@@ -57,6 +57,7 @@ This section provides step-by-step instructions for **both simulation-only evalu
 ### Step 0: Grant Script Permission
 
 ```bash
+cd simulation_ws
 chmod +x gazebo_yahboom.sh
 ```
 
