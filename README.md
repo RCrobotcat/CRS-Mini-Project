@@ -130,4 +130,3 @@ The robot will autonomously navigate using the saved map.
 * AMCL global localization (unknown initial pose)
 * Nav2 + A* global planning
 * Unified workflow for **simulation and real robot**
-* TA-friendly, reproducible evaluation pipeline
