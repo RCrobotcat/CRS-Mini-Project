@@ -7,6 +7,35 @@ The project supports **both Gazebo simulation and real-robot execution**, allowi
 
 ---
 
+## Repository Structure
+```text
+CRS-Mini-Project/
+│
+├── build/                          (Build-related scripts and settings)
+├── install/                        (Installed files / build outputs)
+├── log/                            (Log directory)
+├── gmapping_ws/                    (ROS workspace for gmapping-based map building)
+├── imu_ws/                         (ROS workspace related to IMU sensors)
+├── simulation_ws/                  (ROS workspace for simulation)
+├── yahboomcar_ros2_ws/             (ROS2 workspace)
+│   └── yahboomcar_ws/              (Nested ROS workspace)
+├── yahboomcar_ws/                  (Another ROS workspace)
+│
+├── .gitignore                      (Git ignore configuration)
+├── .python_history                 (Python command history)
+├── .sudo_as_admin_successful       (sudo privilege record file)
+├── README.md                       (Project documentation)
+├── SET_Camera.py                   (Python script for camera setup)
+├── Version.txt                     (Version information file)
+├── config_robot.py                 (Robot configuration script)
+├── start_Camera_computer.sh        (Script to start the camera-side system)
+├── start_agent_computer.sh         (Script to start the agent-side system)
+├── yahboomcar_robot2.sdf           (Robot model SDF file)
+
+```
+
+---
+
 ## Technical Guidelines (Simulation & Real Robot)
 
 This section provides step-by-step instructions for **both simulation-only evaluation** and **real robot deployment**.
