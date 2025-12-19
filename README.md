@@ -31,7 +31,6 @@ CRS-Mini-Project/
 ├── start_Camera_computer.sh        (Script to start the camera-side system)
 ├── start_agent_computer.sh         (Script to start the agent-side system)
 ├── yahboomcar_robot2.sdf           (Robot model SDF file)
-
 ```
 
 ---
