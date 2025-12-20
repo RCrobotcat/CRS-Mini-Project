@@ -50,8 +50,6 @@ This section provides step-by-step instructions for **both simulation-only evalu
 * Nav2
 * GMapping
 
----
-
 #### Build the Workspace
 
 Before running either simulation or real-robot workflows, build the workspace once:
