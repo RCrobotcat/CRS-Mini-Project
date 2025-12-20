@@ -8,65 +8,66 @@ from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
 
-
-    # 找到 Nav2 (ROS 2 导航栈) 的 'nav2_bringup' 包的 'launch' 目录
+    # Locate the 'launch' directory of the Nav2 (ROS 2 Navigation Stack) package 'nav2_bringup'
     nav2_launch_dir = os.path.join(
         get_package_share_directory('nav2_bringup'), 'launch')
         
-    # 找到我们自己的 'robot_nav2' 功能包的共享目录
+    # Locate the shared directory of our own 'robot_nav2' package
     robot_nav2_dir = get_package_share_directory('robot_nav2')
 
+    # RViz configuration file path
     rviz_config_dir = os.path.join(
         get_package_share_directory('robot_nav2'),
         'rviz',
         'navigation.rviz')
-    # 构建地图文件的默认绝对路径
+
+    # Build the default absolute path to the map file
     default_map_path = os.path.join(robot_nav2_dir, 'map', 'map.yaml')
     
-    # 构建 Nav2 参数文件的默认绝对路径
+    # Build the default absolute path to the Nav2 parameter file
     default_param_path = os.path.join(robot_nav2_dir, 'param', 'nav2_params.yaml')
 
-    # 声明 'use_sim_time' 参数,告知所有节点是否使用仿真时钟 (例如 Gazebo 发布的 /clock 话题)
+    # Declare the 'use_sim_time' argument to indicate whether nodes should use
+    # simulation time (e.g., /clock topic published by Gazebo)
     declare_use_sim_time = DeclareLaunchArgument(
         'use_sim_time',
-        default_value='true',  # 默认使用仿真时钟
+        default_value='true',  # Use simulation clock by default
         description='Whether to use simulation (Gazebo) clock')
 
-    # 声明 'map' 参数,指定要加载的地图文件 (.yaml) 的完整路径
+    # Declare the 'map' argument to specify the full path to the map file (.yaml)
     declare_map = DeclareLaunchArgument(
         'map',
-        default_value=default_map_path, # 默认值为我们上面找到的路径
+        default_value=default_map_path,  # Default to the path defined above
         description='Full path to map file to load')
 
-    # 声明 'params_file' 参数,指定 Nav2 使用的参数配置文件 (.yaml)
+    # Declare the 'params_file' argument to specify the Nav2 parameter file (.yaml)
     declare_params_file = DeclareLaunchArgument(
         'params_file',
-        default_value=default_param_path, # 默认值为我们上面找到的路径
+        default_value=default_param_path,  # Default to the path defined above
         description='Full path to param file to load')
 
-
-    # include调用 Nav2 官方提供的 'bringup_launch.py'，
+    # Include the official Nav2 launch file 'bringup_launch.py'
     include_nav2_bringup = IncludeLaunchDescription(
-        # 指定要包含的启动文件的来源
+        # Specify the source of the launch file to include
         PythonLaunchDescriptionSource(
             os.path.join(nav2_launch_dir, 'bringup_launch.py')),
-        # 传递前面声明参数的值。
+        # Pass the declared arguments to the Nav2 bringup launch file
         launch_arguments={
             'map': LaunchConfiguration('map'),
             'use_sim_time': LaunchConfiguration('use_sim_time'),
             'params_file': LaunchConfiguration('params_file')
-        }.items() # .items() 是必须的，用于将其转换为可迭代的键值对
+        }.items()  # .items() is required to convert to iterable key-value pairs
     )
 
-
-    rviz_node= Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            arguments=['-d', rviz_config_dir],
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
-            output='screen')
-    
+    # RViz node for visualization
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        arguments=['-d', rviz_config_dir],
+        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        output='screen'
+    )
 
     ld = LaunchDescription()
 
@@ -76,5 +77,5 @@ def generate_launch_description():
     ld.add_action(include_nav2_bringup)
     ld.add_action(rviz_node)
 
-
     return ld
+

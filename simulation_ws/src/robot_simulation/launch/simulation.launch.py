@@ -8,80 +8,80 @@ from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
-    # ========== 路径配置 ==========
-    # 获取当前功能包的launch目录路径
+    # ========== Path Configuration ==========
+    # Get the launch directory path of the current package
     launch_file_dir = os.path.join(
         get_package_share_directory('robot_simulation'),
         'launch'
     )
 
-    # ========== Launch参数声明 ==========
-    # --- 世界环境参数 ---
+    # ========== Launch Argument Declarations ==========
+    # --- World environment arguments ---
     declare_world_name = DeclareLaunchArgument(
         'world_name',
         default_value='2.world',
-        description='Gazebo世界文件名称'
+        description='Gazebo world file name'
     )
 
     declare_gui = DeclareLaunchArgument(
         'gui',
         default_value='true',
-        description='是否启动Gazebo GUI'
+        description='Whether to start Gazebo GUI'
     )
 
     declare_verbose = DeclareLaunchArgument(
         'verbose',
         default_value='false',
-        description='是否输出详细日志'
+        description='Whether to output verbose logs'
     )
 
     declare_pause = DeclareLaunchArgument(
         'pause',
         default_value='false',
-        description='启动时是否暂停仿真'
+        description='Whether to start simulation paused'
     )
 
-    # --- 机器人参数 ---
+    # --- Robot arguments ---
     declare_robot_name = DeclareLaunchArgument(
         'robot_name',
         default_value='robotcar',
-        description='机器人名称/命名空间'
+        description='Robot name / namespace'
     )
 
     declare_x_pose = DeclareLaunchArgument(
         'x_pose',
         default_value='1.26',
-        description='机器人初始X坐标（米）'
+        description='Initial X position of the robot (meters)'
     )
 
     declare_y_pose = DeclareLaunchArgument(
         'y_pose',
         default_value='-1.44',
-        description='机器人初始Y坐标（米）'
+        description='Initial Y position of the robot (meters)'
     )
 
     declare_z_pose = DeclareLaunchArgument(
         'z_pose',
         default_value='0.05',
-        description='机器人初始Z坐标（米）'
+        description='Initial Z position of the robot (meters)'
     )
 
     declare_yaw_pose = DeclareLaunchArgument(
         'yaw_pose',
         default_value='-3.14',
-        description='机器人初始偏航角（弧度）'
+        description='Initial yaw angle of the robot (radians)'
     )
 
-    # --- 通用参数 ---
+    # --- Common arguments ---
     declare_use_sim_time = DeclareLaunchArgument(
         'use_sim_time',
         default_value='true',
-        description='是否使用仿真时间'
+        description='Whether to use simulation time'
     )
 
-    # ========== 子Launch文件包含 ==========
-    # 1. 启动Gazebo世界环境
-    # 负责启动gzserver和gzclient，加载世界文件
+    # ========== Include Sub Launch Files ==========
+    # 1. Launch Gazebo world environment
+    # Responsible for starting gzserver and gzclient, and loading the world file
     launch_empty_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(launch_file_dir, 'empty_world.launch.py')
@@ -95,8 +95,8 @@ def generate_launch_description():
         ]
     )
 
-    # 2. 生成机器人模型
-    # 负责发布机器人描述并在Gazebo中spawn机器人实体
+    # 2. Spawn the robot model
+    # Responsible for publishing robot description and spawning the robot entity in Gazebo
     launch_robot_spawn = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(launch_file_dir, 'robot_spawn.launch.py')
@@ -111,37 +111,37 @@ def generate_launch_description():
         ]
     )
 
-    
     robot_state_publisher_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(launch_file_dir, 'robot_state_publisher.launch.py')
         ),
-        launch_arguments={'use_sim_time':  LaunchConfiguration('use_sim_time')}.items()
+        launch_arguments={'use_sim_time': LaunchConfiguration('use_sim_time')}.items()
     )
 
-    # ========== 构建Launch描述 ==========
+    # ========== Build Launch Description ==========
     return LaunchDescription([
-        # --- 参数声明 ---
-        # 世界环境参数
+        # --- Argument declarations ---
+        # World environment arguments
         declare_world_name,
         declare_gui,
         declare_verbose,
         declare_pause,
 
-        # 机器人参数
+        # Robot arguments
         declare_robot_name,
         declare_x_pose,
         declare_y_pose,
         declare_z_pose,
         declare_yaw_pose,
 
-        # 通用参数
+        # Common arguments
         declare_use_sim_time,
 
-        # --- 启动顺序 ---
-        # 注意：虽然这里按顺序写，但实际上launch系统会并行启动
-        # robot_spawn中的spawn_entity有超时机制，会等待Gazebo准备就绪
-        launch_empty_world,    # 先启动世界环境
-        launch_robot_spawn,    # 然后生成机器人
+        # --- Launch order ---
+        # Note: Although listed in order, the launch system starts nodes in parallel
+        # spawn_entity in robot_spawn has a timeout mechanism and will wait for Gazebo to be ready
+        launch_empty_world,     # Start the world environment first
+        launch_robot_spawn,     # Then spawn the robot
         robot_state_publisher_cmd
     ])
+

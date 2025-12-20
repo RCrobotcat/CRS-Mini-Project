@@ -57,21 +57,18 @@ This section provides step-by-step instructions for **both simulation-only evalu
 ### Step 0: Grant Script Permission
 
 ```bash
-cd simulation_ws
 chmod +x gazebo_yahboom.sh
 ```
 
 ### Step 1: Launch Gazebo Simulation
 
 ```bash
-cd simulation_ws
 ./gazebo_yahboom.sh
 ```
 
 (Manual equivalent)
 
 ```bash
-cd simulation_ws
 source /usr/share/gazebo-11/setup.sh
 source install/setup.bash
 export GAZEBO_MODEL_PATH="${PWD}/src/robot_simulation/models:${PWD}/install/yahboomcar_description/share:${PWD}/src/robot_description/models:${GAZEBO_MODEL_PATH}"

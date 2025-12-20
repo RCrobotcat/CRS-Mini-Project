@@ -21,10 +21,10 @@ def generate_launch_description():
     pkg_share = FindPackageShare(package=package_name).find(package_name)
     urdf_model_path = os.path.join(pkg_share, "urdf", urdf_name)
 
-    # 获取 gazebo_ros 包路径
+    # Get the path of the gazebo_ros package
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
 
-    # 声明launch参数
+    # Declare launch arguments
     model_arg = DeclareLaunchArgument(
         name='model',
         default_value=str(urdf_model_path),
@@ -65,10 +65,10 @@ def generate_launch_description():
         output='screen'
     )
 
-    # 获取默认世界文件路径
+    # Get the default world file path
     world_path = os.path.join(pkg_gazebo_ros, 'worlds', 'empty.world')
 
-    # 使用 ROS2 标准方式启动 Gazebo server
+    # Start Gazebo server using the standard ROS 2 launch mechanism
     gzserver_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')
@@ -80,7 +80,7 @@ def generate_launch_description():
         }.items()
     )
 
-    # 使用 ROS2 标准方式启动 Gazebo client (GUI)
+    # Start Gazebo client (GUI) using the standard ROS 2 launch mechanism
     gzclient_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
@@ -90,14 +90,14 @@ def generate_launch_description():
         }.items()
     )
 
-    # Gazebo spawn entity - 增加超时等待
+    # Gazebo spawn entity with extended timeout
     spawn_entity_cmd = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
         arguments=[
             '-entity', robot_name_in_model,
             '-topic', 'robot_description',
-            '-timeout', '60.0'  # 增加超时时间
+            '-timeout', '60.0'  # Increase timeout duration
         ],
         output='screen'
     )
@@ -105,20 +105,20 @@ def generate_launch_description():
     # LaunchDescription
     ld = LaunchDescription()
 
-    # 添加参数声明
+    # Add argument declarations
     ld.add_action(model_arg)
     ld.add_action(gui_arg)
     ld.add_action(verbose_arg)
 
-    # 先启动 robot publishers
+    # Start robot state publishers first
     ld.add_action(robot_state_publisher_node)
     ld.add_action(joint_state_publisher_node)
 
-    # 然后启动 Gazebo（先server后client）
+    # Then start Gazebo (server first, then client)
     ld.add_action(gzserver_launch)
     ld.add_action(gzclient_launch)
 
-    # 最后spawn机器人
+    # Finally spawn the robot
     ld.add_action(spawn_entity_cmd)
 
     return ld

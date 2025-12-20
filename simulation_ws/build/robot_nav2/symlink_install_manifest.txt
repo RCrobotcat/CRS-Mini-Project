@@ -11,6 +11,8 @@
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/keepout_mask.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/map.pgm
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/map.yaml
+/home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/map_slam.pgm
+/home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/map/map_slam.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/burger.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/keepout_params.yaml
 /home/yahboom/simulation_ws/install/robot_nav2/share/robot_nav2/param/nav2_params.yaml
