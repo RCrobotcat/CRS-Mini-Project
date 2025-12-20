@@ -52,6 +52,16 @@ This section provides step-by-step instructions for **both simulation-only evalu
 
 ---
 
+#### Build the Workspace
+
+Before running either simulation or real-robot workflows, build the workspace once:
+
+```bash
+colcon build
+```
+
+---
+
 ## 2. Simulation Workflow (No Physical Robot Required)
 
 ### Step 0: Grant Script Permission
