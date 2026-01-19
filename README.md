@@ -1,7 +1,7 @@
 ## CRS Mini Project – Autonomous Maze Navigation Robot
 
 This repository implements an autonomous maze navigation system based on **ROS 2 + Micro-ROS (ESP32)**.
-The robot is capable of **global localization, A* path planning, and fully autonomous navigation** in a known maze with an unknown initial pose.
+The robot is capable of **global localization, A\* path planning, and fully autonomous navigation** in a known maze with an unknown initial pose.
 
 The project supports **both Gazebo simulation and real-robot execution**, allowing full evaluation without physical hardware.
 
